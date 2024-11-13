@@ -1,14 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Contact
+from .models import ContactUs
 
 # Create your views here.
 def home(request):
 
     return render(request, 'home.html', context={})
 
-def contact(request):
-
-    return render(request, 'contact.html', context={})
 
 def about(request):
 
@@ -22,9 +19,9 @@ def portfolio(request):
 
     return render(request, 'portfolio.html', context={})
 
-def create_message(request):
+def contact(request):
     if request.method == 'POST':
-        message = Contact(
+        message = ContactUs(
             name = request.POST['name'],
             email = request.POST['email'],
             message = request.POST['message'],
