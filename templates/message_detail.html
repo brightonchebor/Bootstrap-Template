@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Messages
+{% endblock title %}
+
+{% block content %}
+
+
+<table class="table table-light table-responsive">
+    <thead> 
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Phone</th>
+            <th>Date</th>
+            
+        </tr> 
+          
+    </thead>
+    <tbody>
+        {% for message in messages   %}
+        <tr>
+            <td>{{message.name}}</td>
+            <td>{{message.email}}</td>
+            <td>{{message.message}}</td>
+            <td>{{message.phone}}</td>
+            <td>{{message.date}}</td>
+            <td>
+
+                <a href="{% url 'messages' message.id %}" class="btn btn-danger">Delete</a>
+    
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
+

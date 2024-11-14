@@ -35,3 +35,8 @@ def contact(request):
     else:
         return render(request, 'contact.html', context={})
 
+def message_detail(request):
+    messages = ContactUs.objects.all()
+    context={'messages':messages}
+    
+    return render(request, 'message_detail.html', context )
