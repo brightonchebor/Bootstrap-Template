@@ -53,19 +53,15 @@ def update_message(request, id):
     message = get_object_or_404(ContactUs, id=id)
 
     if request.method == 'POST':
-
-        message.name = request.POST.get('name')
+        
         message.name = request.POST.get('name')
         message.email = request.POST.get('email')
         message.phone = request.POST.get('phone')
         message.date = request.POST.get('date')
-        message.doctor = request.POST.get('doctor')
-        message.department = request.POST.get('department')
         message.message = request.POST.get('message')
 
         message.save()
 
         return redirect("messages")
-    message.save()
 
     return render(request, "message_update.html", context={'message' : message})
