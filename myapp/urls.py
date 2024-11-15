@@ -8,5 +8,6 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('portfolio/', portfolio, name='portfolio'),
     path('messages/', message_detail, name='messages'),
-    path('messages/delete/<int:id>/', message_delete, name='delete')
+    path('messages/delete/<int:id>/', message_delete, name='delete'),
+    path('message/update/<int:id>/', update_message, name='update')
 ]
