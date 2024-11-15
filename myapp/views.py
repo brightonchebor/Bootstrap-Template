@@ -46,3 +46,39 @@ def message_delete(request, id):
     message.delete()
 
     return redirect('messages')
+
+# Update
+
+def update_appointment(request, appointment_id):
+
+    """ Update the appointments """
+
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+
+    # Put the condition for the form to update
+
+    if request.method == 'POST':
+
+        appointment.name = request.POST.get('name'),
+
+        appointment.email = request.POST.get('email'),
+
+        appointment.phone = request.POST.get('phone'),
+
+        appointment.date = request.POST.get('date'),
+
+        appointment.doctor = request.POST.get('doctor'),
+
+        appointment.department = request.POST.get('department'),
+
+        appointment.message = request.POST.get('message'),
+
+        # Once you click on the update button
+
+        appointment.save()
+
+        return redirect("medi_app:show_appointments")
+
+    
+
+    return render(request, "edit_appointment.html")
