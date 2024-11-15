@@ -12,6 +12,7 @@ Messages
 <table class="table table-light table-responsive">
     <thead> 
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Message</th>
@@ -24,6 +25,7 @@ Messages
     <tbody>
         {% for message in messages   %}
         <tr>
+            <td>{{message.id}}</td>
             <td>{{message.name}}</td>
             <td>{{message.email}}</td>
             <td>{{message.message}}</td>
@@ -31,7 +33,7 @@ Messages
             <td>{{message.date}}</td>
             <td>
 
-                <a href="{% url 'messages' message.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url "delete" message.id  %}" class="btn btn-danger">Delete</a>
     
             </td>
         </tr>

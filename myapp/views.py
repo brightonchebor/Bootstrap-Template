@@ -40,3 +40,9 @@ def message_detail(request):
     context={'messages':messages}
     
     return render(request, 'message_detail.html', context )
+
+def message_delete(request, id):
+    message = ContactUs.objects.get(id=id)    
+    message.delete()
+
+    return redirect('messages')
