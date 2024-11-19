@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -19,13 +19,13 @@ def register(request):
                 )
                 user.save()
                 message = messages.success(request, 'Account created successfully')
+                return redirect('home')
             except:
                 message = messages.error(request, 'User already exists')
+                return redirect('register')
         else:
             message = messages.error(request, 'Passwords did not match')
-
-    
-    
+            return redirect('register')
 
     return render(request, 'accounts/register.html', context={})
 
