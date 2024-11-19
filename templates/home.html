@@ -5,6 +5,19 @@
 {% endblock title %}
 
 {% block content %}
+
+{% if messages %}
+
+    <ul>
+    {% for message in messages %} 
+    <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+        {{ message }}
+    </li>
+    {% endfor %}
+
+    </ul>
+
+{% endif %}
 <section class="hero" id="hero">
     <div class="heroText">
         <h1 class="text-white mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
