@@ -13,9 +13,4 @@ class ContactUs(models.Model):
 
         return self.name
     
-class User(AbstractUser):
-    firstname = models.CharField(max_length=50)   
-    lasrname = models.CharField(max_length=50) 
-    username = models.CharField(max_length=50) 
-    email = models.EmailField()
-    password = models.CharField(max_length=50)
+
