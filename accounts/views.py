@@ -8,14 +8,18 @@ def register(request):
 
     if request.method == 'POST':
         username = request.POST['username']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
         password = request.POST['password']
-        password_confirm = request.POST['password_confirm']
+        confirm_password = request.POST['confirm_password ']
 
-        if password  == password_confirm:
+        if password  == confirm_password :
             try:
                 user = User.objects.create_user(
                     username=username,
-                    password=password
+                    password=password,
+                    lastname=lastname,
+                    firstname=firstname
                 )
                 user.save()
                 message = messages.success(request, 'Account created successfully')
