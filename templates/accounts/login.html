@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-	Register Page
+	Login Page
 {% endblock title %}
 
 {% block content %}
@@ -16,7 +16,7 @@
 
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<h4 class="card-title mt-3 text-center">Login</h4>
 	<p class="text-center">Get started with your free account</p>
 	<p>
 		<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
@@ -26,7 +26,7 @@
         <span class="bg-light">OR</span>
     </p>
 	<form method="POST">
-	
+	{% csrf_token %}
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -43,7 +43,7 @@
     </div> <!-- form-group// -->
                                         
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" class="btn btn-primary btn-block"> Login  </button>
     </div> <!-- form-group// -->      
                                                                     
 </form>
