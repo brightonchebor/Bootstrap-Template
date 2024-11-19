@@ -22,10 +22,9 @@ def register(request):
                 return redirect('home')
             except:
                 message = messages.error(request, 'User already exists')
-                return redirect('register')
+                
         else:
             message = messages.error(request, 'Passwords did not match')
-            return redirect('register')
-
+            
     return render(request, 'accounts/register.html', context={})
 
