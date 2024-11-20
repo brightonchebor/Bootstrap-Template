@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
+from myapp.models import UploadedImage
+from django.core.files.storage import FileSystemStorage
+
 
 # Create your views here.
 
@@ -61,3 +64,18 @@ def login_view(request):
             )    
     return render(request, 'accounts/login.html', context={})
 
+def upload_image(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        uploaded_file = request.FILES['image']
+
+        fs = FileSystemStorage()
+        filename = fs.save(uploaded_file.name, uploaded_file)
+        file_url = fs.url(filename)
+
+        image = UploadedImage.objects.create(title=title, image=filename)
+        image.save()
+
+        return render(request, 'accounts/upload_success.html', {'file_url':file_url})
+    return render(request, 'accounts/upload_image.html')
+        
