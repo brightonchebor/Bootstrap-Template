@@ -35,7 +35,7 @@ def register(request):
             
     return render(request, 'accounts/register.html', context={})
 
-def login(request):
-
+def login_view(request):
+    
     return render(request, 'accounts/login.html', context={})
 
