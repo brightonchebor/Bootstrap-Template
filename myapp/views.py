@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import ContactUs
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -19,6 +20,7 @@ def portfolio(request):
 
     return render(request, 'portfolio.html', context={})
 
+@login_required(login_url='accounts:login')
 def contact(request):
     if request.method == 'POST':
         message = ContactUs(
