@@ -13,8 +13,8 @@ class ContactUs(models.Model):
 
         return self.name
     
-class UploadedImage(models.model):
-    title = models.Charfield(max_length=100)
+class UploadedImage(models.Model):
+    title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='uploaded_images/')
 
     def __str__(self):
