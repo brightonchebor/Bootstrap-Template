@@ -67,3 +67,4 @@ def update_message(request, id):
         return redirect("messages")
 
     return render(request, "message_update.html", context={'message' : message})
+
