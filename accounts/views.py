@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 
 from myapp.models import UploadedImage
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import user_passes_test
 
 
 # Create your views here.
@@ -64,6 +65,11 @@ def login_view(request):
             )    
     return render(request, 'accounts/login.html', context={})
 
+def superuser_required(user): 
+    return user.is_superuser 
+
+
+@user_passes_test(superuser_required)
 def upload_image(request):
     if request.method == 'POST':
         title = request.POST['title']
