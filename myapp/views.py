@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import ContactUs
+from .models import ContactUs, Transaction
 from django.contrib.auth.decorators import login_required
 
 import requests
@@ -7,6 +7,8 @@ import json
 from myapp.credentials import LipanaMpesaPpassword, MpesaAccessToken
 
 from django.http import HttpResponse
+from django.utils.timezone import now
+
 # Create your views here.
 def home(request):
 
@@ -120,4 +122,13 @@ def stk(request):
             "TransactionDesc": "Web Development Charges"
         }
         response = requests.post(api_url, json=request, headers=headers)
+        response_data = response.json()
+
+        transaction = Transaction.objects.create(
+            transaction_id=response_data.get("CheckoutRequestID"),
+            phone_number=phone,
+            amount=amount,
+            transaction_time=now(),
+            status="Pending",  # Initially pending, updated by callback
+        )
         return HttpResponse("Success")
