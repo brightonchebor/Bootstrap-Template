@@ -33,9 +33,7 @@ Messages
             <td>{{message.date}}</td>
             <td>
 
-                <a href="{% url "update" message.id  %}" class="btn btn-primary">Edit</a>
-                <a href="{% url "delete" message.id  %}" class="btn btn-danger">Delete</a>
-                <a href="{% url "update" message.id  %}" class="btn btn-primary">Edit</a>
+                
     
             </td>
         </tr>
@@ -49,4 +47,6 @@ Messages
 <br/>
 
 {% endblock content %}
-
+<a href="{% url "update" message.id  %}" class="btn btn-primary">Edit</a>
+                <a href="{% url "delete" message.id  %}" class="btn btn-danger">Delete</a>
+                <a href="{% url "update" message.id  %}" class="btn btn-primary">Edit</a>
